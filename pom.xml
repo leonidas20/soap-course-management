@@ -56,6 +56,7 @@
 			<groupId>org.springframework.ws</groupId>
 			<artifactId>spring-ws-core</artifactId>
 		</dependency>
+		
 
 	</dependencies>
 
@@ -65,6 +66,34 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>jaxb2-maven-plugin</artifactId>
+            <version>2.4</version>
+            <executions>
+                <execution>
+                    <id>xjc</id>
+                    <goals>
+                        <goal>xjc</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+				<schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
+				<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+				<clearOutputDir>false</clearOutputDir>
+				
+				<sources>
+     <source>src/main/resources/course-details.xsd</source>
+ </sources>
+            </configuration>
+        </plugin>
+			
+			<!-- JAXB2 Maven Plugin -->
+			<!-- XSD Source Folder -->
+			<!-- Java Class Source Folder -->
+			<!-- clear folder -> false -->
 		</plugins>
 	</build>
 
