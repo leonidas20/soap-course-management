@@ -12,7 +12,6 @@
 		</xs:complexType>
 	</xs:element>
 
-
 	<xs:element name="GetCourseDetailsResponse">
 		<xs:complexType>
 			<xs:sequence>
@@ -30,15 +29,14 @@
 
 	</xs:complexType>
 
-	<xs:element name="GetAllCourseDetailsResponse">
-
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="GetAllCourseDetailsResponse"
-					type="tns:CourseDetails" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+<!-- 	<xs:element name="GetAllCourseDetailsResponse"> -->
+<!-- 		<xs:complexType> -->
+<!-- 			<xs:sequence> -->
+<!-- 				<xs:element name="GetAllCourseDetailsResponse" -->
+<!-- 					type="tns:CourseDetails" /> -->
+<!-- 			</xs:sequence> -->
+<!-- 		</xs:complexType> -->
+<!-- 	</xs:element> -->
 
 
 </xs:schema>
