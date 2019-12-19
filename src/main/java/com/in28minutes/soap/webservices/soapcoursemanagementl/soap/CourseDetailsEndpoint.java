@@ -1,5 +1,6 @@
 package com.in28minutes.soap.webservices.soapcoursemanagementl.soap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -8,9 +9,14 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import com.in28minutes.courses.CourseDetails;
 import com.in28minutes.courses.GetCourseDetailsRequest;
 import com.in28minutes.courses.GetCourseDetailsResponse;
+import com.in28minutes.soap.webservices.soapcoursemanagementl.soap.bean.Course;
+import com.in28minutes.soap.webservices.soapcoursemanagementl.soap.service.CourseDetailsService;
 
 @Endpoint
 public class CourseDetailsEndpoint {
+	
+	@Autowired
+	CourseDetailsService service;
 
 	// method
 	// input - GetCourseDetailsRequest
@@ -39,11 +45,17 @@ public class CourseDetailsEndpoint {
 	public GetCourseDetailsResponse processCourseDetailsRequest(@RequestPayload GetCourseDetailsRequest request) {
 
 		GetCourseDetailsResponse response = new GetCourseDetailsResponse();
+		
+		Course course = service.findById(request.getId());
 
 		CourseDetails courseDetails = new CourseDetails();
-		courseDetails.setId(request.getId());
-		courseDetails.setName("Microservices course");
-		courseDetails.setDescription("This is going to be a wondeful course!");
+		
+		courseDetails.setId(course.getId());
+		
+		courseDetails.setName(course.getName());
+		
+		courseDetails.setDescription(course.getDescription());
+		
 		response.setCourseDetails(courseDetails);
 
 		return response;
