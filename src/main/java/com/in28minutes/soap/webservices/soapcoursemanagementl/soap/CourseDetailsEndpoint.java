@@ -44,9 +44,13 @@ public class CourseDetailsEndpoint {
 	@ResponsePayload
 	public GetCourseDetailsResponse processCourseDetailsRequest(@RequestPayload GetCourseDetailsRequest request) {
 
-		GetCourseDetailsResponse response = new GetCourseDetailsResponse();
-		
 		Course course = service.findById(request.getId());
+
+		return mapCourse(course);
+	}
+
+	private GetCourseDetailsResponse mapCourse(Course course) {
+		GetCourseDetailsResponse response = new GetCourseDetailsResponse();
 
 		CourseDetails courseDetails = new CourseDetails();
 		
